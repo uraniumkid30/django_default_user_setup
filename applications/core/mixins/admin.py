@@ -1,29 +1,23 @@
 import csv
 from datetime import datetime
-from abc import ABC, abstractmethod
 
 from django.http import HttpResponse
 
 
-class AbstractMixin(ABC):
+class ExportCsvMixin:
     @classmethod
-    @abstractmethod
     def get_field_names(cls):
         # meta = self.model._meta
         """ Refer to comment on line 34"""
         # field_names = [field.name for field in meta.fields]
-        pass
+        raise NotImplementedError
 
     @classmethod
-    @abstractmethod
     def get_query_data(cls):
         """ Commented this out to handle the logic better for making this export feature more generic"""
         # for obj in queryset:
         #     row = writer.writerow([getattr(obj, field) for field in field_names])
-        pass
-
-
-class ExportCsvMixin(AbstractMixin):
+        raise NotImplementedError
 
     def export_as_csv(self, request, queryset):
         field_names = self.get_field_names()
