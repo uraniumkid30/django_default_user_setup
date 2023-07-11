@@ -11,7 +11,7 @@ class UserValidation:
 
     @staticmethod
     def phone_number_is_valid(value: str) -> NoReturn:
-        pattern: str = '\A(?=(\+?234[^0]+)).{10,16}'
+        pattern: str = '\+?[0-9]{10,18}'
         if not re.match(pattern, value):
             raise ValueError(f"Invalid phone number {value}")
 

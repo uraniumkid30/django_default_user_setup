@@ -5,6 +5,6 @@ from accounts.managers.services import UserProfileService
 
 
 @receiver(post_save, sender=User)
-def create_mother_ship(sender, instance, created, **kwargs):
+def create_user(sender, instance, created, **kwargs):
     if created:
         UserProfileService.create_user_profile(**kwargs)
