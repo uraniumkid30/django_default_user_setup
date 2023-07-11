@@ -8,7 +8,7 @@ from django.contrib.auth.admin import UserAdmin
 
 from .models import User, UserProfile, Blacklist
 
-# admin.site.register(User)
+
 admin.site.register(UserProfile)
 class ExportCsvMixin:
     def export_as_csv(self, request, queryset):
