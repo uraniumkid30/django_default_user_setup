@@ -15,7 +15,7 @@ class ExportUserCSVMixin(ExportCsvMixin):
         return User.objects.all().values_list('first_name', 'last_name', 'phone_no', 'email', 'created_at')
 
 
-class CustomUserAdmin(UserAdmin, ExportCsvMixin):
+class CustomUserAdmin(UserAdmin):#, ExportUserCSVMixin
     list_display = ('id', 'first_name', 'last_name', 'email', 'phone_no',
                     'created_at')
     list_filter = ('created_at', 'is_active', 'is_staff')

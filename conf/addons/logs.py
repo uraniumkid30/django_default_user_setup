@@ -28,6 +28,10 @@ def get_logs_settings(logs_dir: str = "", installed_apps: list = []) -> str:
                 "class": "logging.FileHandler",
                 "filename": os.path.join(logs_dir, "error.log"),
             },
+            "SysLog": {
+                "level": "ERROR",
+                "class": "logging.StreamHandler",
+            },
             "daily_error": {
                 "level": "ERROR",
                 "class": "logging.handlers.TimedRotatingFileHandler",

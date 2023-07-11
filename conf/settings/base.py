@@ -89,4 +89,4 @@ MEDIA_ROOT = MEDIA_DIR
 # WHITENOISE_STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGGING = get_logs_settings(LOGS_DIR, LOCAL_APPS)
-AUTH_USER_MODEL = 'core.User'
+AUTH_USER_MODEL = 'accounts.User'
