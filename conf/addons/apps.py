@@ -9,7 +9,9 @@ DEFAULT_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
-LOCAL_APPS = []
+LOCAL_APPS = [
+    "applications.accounts",
+]
 
 THIRD_PARTY_APPS = [
     # "rest_framework",

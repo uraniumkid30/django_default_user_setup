@@ -7,10 +7,11 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 admin.site.site_header = "Custom Administration"
 
-# admin.autodiscover()
-
+admin.autodiscover()
+app = "applications."
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("accounts/", include(f'{app}accounts.urls'))
 ]
 
 urlpatterns += staticfiles_urlpatterns()

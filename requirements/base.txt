@@ -3,6 +3,7 @@ black
 click
 coverage
 django
+django-filter
 exceptiongroup
 factory-boy
 faker
