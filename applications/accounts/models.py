@@ -7,7 +7,7 @@ from django.contrib.auth.models import (
 )
 
 from .managers import UserManager
-from applications.core.models import BaseModel
+from conf.core.models import BaseModel
 
 
 class User(AbstractBaseUser, PermissionsMixin, BaseModel):
@@ -57,8 +57,6 @@ class Blacklist(BaseModel):
 
 class UserProfile(BaseModel):
     user = models.OneToOneField(to='User', on_delete=models.CASCADE)
-    available_online = models.BooleanField(default=False)
-    Tax_identification_no = models.CharField(max_length=255, default="None")
 
     def __str__(self):
         return "{}".format(self.user)

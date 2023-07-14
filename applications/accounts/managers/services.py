@@ -1,7 +1,7 @@
 from typing import List
 
 from applications.accounts.models import User, UserProfile
-from applications.core.repositories.base import BaseService
+from conf.core.repositories.base import BaseService
 
 
 class UserService(BaseService):

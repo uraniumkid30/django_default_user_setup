@@ -1,6 +1,11 @@
 import os
 from conf.addons.constants import *
-from conf.addons.directories import *
+from conf.addons.directories import (
+    THEME_DIR,
+    LOGS_DIR,
+    STATIC_COLLECTION_DIR,
+    MEDIA_DIR,
+)
 from conf.addons.apps import INSTALLED_APPS, LOCAL_APPS
 from conf.addons.logs import get_logs_settings
 

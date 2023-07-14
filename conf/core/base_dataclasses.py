@@ -3,10 +3,12 @@ from dataclasses import dataclass, asdict
 from abc import ABC, abstractmethod
 
 
-class DefaultSchema:
+class BaseSchema:
     def to_dict(self):
         return {k: v for k, v in asdict(self).items()}
 
+
+class DefaultSchema(BaseSchema):
     def choices(self):
         return [(v, k) for k, v in asdict(self).items()]
 
