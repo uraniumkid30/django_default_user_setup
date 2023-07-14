@@ -7,7 +7,7 @@ from django.contrib.auth.models import (
 )
 
 from .managers import UserManager
-from applications.core.models import BaseModel
+from conf.core.models import BaseModel
 
 
 class User(AbstractBaseUser, PermissionsMixin, BaseModel):
@@ -34,14 +34,14 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
         verbose_name = 'user'
         verbose_name_plural = 'users'
 
-    def get_full_name(self):
+    def get_full_name(self) -> str:
         '''
         Returns the first_name plus the last_name, with a space in between.
         '''
         full_name = '%s %s' % (self.first_name, self.last_name)
         return full_name.strip()
 
-    def get_short_name(self):
+    def get_short_name(self) -> str:
         '''
         Returns the short name for the user.
         '''
@@ -57,8 +57,6 @@ class Blacklist(BaseModel):
 
 class UserProfile(BaseModel):
     user = models.OneToOneField(to='User', on_delete=models.CASCADE)
-    available_online = models.BooleanField(default=False)
-    Tax_identification_no = models.CharField(max_length=255, default="None")
 
     def __str__(self):
         return "{}".format(self.user)

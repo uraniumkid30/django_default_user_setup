@@ -8,15 +8,13 @@ from conf.addons.directories import (
     DATABASE_DIR,
     FileProcessingTool
 )
+from conf.addons.db_engines import db_engine_factory
 
 db_name = "production_database.sqlite3"
 db_path = os.path.join(DATABASE_DIR, db_name)
 FileProcessingTool.check_and_create_file(db_path)
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": db_path,
-    }
+    "default": db_engine_factory({"NAME": db_path})
 }
 
 DEBUG = False

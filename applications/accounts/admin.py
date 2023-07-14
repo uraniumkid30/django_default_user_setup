@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from applications.core.mixins.admin import ExportCsvMixin
+from conf.core.mixins.admin import ExportCsvMixin
 from .models import User, UserProfile, Blacklist
 
 

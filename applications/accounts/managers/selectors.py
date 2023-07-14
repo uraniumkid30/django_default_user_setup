@@ -1,6 +1,6 @@
 from django.db.models.query import QuerySet
 
-from core.repositories.base import BaseSelector
+from conf.core.repositories.base import BaseSelector
 from applications.accounts.models import User
 from .filters import UserFilter
 
