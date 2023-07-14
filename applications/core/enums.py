@@ -1,3 +1,4 @@
+from typing import Tuple, Any, Hashable
 from django.db.models.fields import PositiveSmallIntegerField
 
 
@@ -96,7 +97,7 @@ class CustomEnum(object):
             return None
 
     @classmethod
-    def get_counter(c):
+    def get_counter(c) -> dict:
         counter = {}
         for key, value in c.__dict__.items():
             if key.isupper():
@@ -104,13 +105,13 @@ class CustomEnum(object):
         return counter
 
     @classmethod
-    def items(c):
+    def items(c) -> list:
         attrs = [a for a in c.__dict__.keys() if a.isupper()]
         values = [(v, c.__dict__[v]) for v in attrs]
         return sorted(values, key=lambda x: x[1])
 
     @classmethod
-    def is_valid_transition(c, from_status, to_status):
+    def is_valid_transition(c, from_status, to_status) -> bool:
         return from_status == to_status or from_status in c.transition_origins(
             to_status
         )
@@ -120,7 +121,7 @@ class CustomEnum(object):
         return c._transitions[to_status]
 
     @classmethod
-    def get_name(c, key):
+    def get_name(c, key: Hashable) -> Any:
         choices_name = dict(c.choices())
         return choices_name.get(key)
 
@@ -133,7 +134,7 @@ class Status(CustomEnum):
     CANCELLED = 4
 
     @classmethod
-    def choices(c):
+    def choices(c) -> Tuple[Tuple[int, str]]:
         return (
             (c.INACTIVE, "Inactive"),
             (c.ACTIVE, "Active"),

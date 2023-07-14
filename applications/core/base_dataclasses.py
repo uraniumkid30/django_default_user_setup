@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, List
 from dataclasses import dataclass, asdict
 from abc import ABC, abstractmethod
 
@@ -25,9 +25,9 @@ class DefaultChoiceInterfaceSchema:
 
 @dataclass(frozen=True)
 class DefaultChoiceSchema(DefaultSchema):
-    data: list[DefaultChoiceInterfaceSchema]
+    data: List[DefaultChoiceInterfaceSchema]
 
-    def choices(self):
+    def choices(self) -> List[tuple]:
         return [(item["value"], item["display"]) for item in self.data]
 
 
@@ -38,7 +38,12 @@ class AbstractChoices(ABC):
         pass
 
     @classmethod
-    def choices(cls) -> list:
+    @abstractmethod
+    def get_default(cls) -> dict:
+        pass
+
+    @classmethod
+    def choices(cls) -> List[tuple]:
         data: dict = cls.get_data()
         default_choice = DefaultChoiceSchema(data=data)
         cls.default_choice = default_choice
@@ -46,5 +51,6 @@ class AbstractChoices(ABC):
 
     @classmethod
     def in_choices(cls, value) -> bool:
+        """ checks if value is in the list of choices"""
         cls.choices()
         return cls.default_choice.in_choices(value)

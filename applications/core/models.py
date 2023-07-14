@@ -1,6 +1,6 @@
-from django.db import models
+from typing import NoReturn, List
 
-# Create your models here.
+from django.db import models
 
 
 class BaseModel(models.Model):
@@ -15,11 +15,11 @@ class BaseModel(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False)
 
-    def soft_delete(self):
+    def soft_delete(self: object) -> NoReturn:
         """Soft delete a model instance"""
-        self.is_deleted = True
+        self.is_deleted: bool = True
         self.save()
 
     class Meta:
-        abstract = True
-        ordering = ['-created_at']
+        abstract: bool = True
+        ordering: List[str] = ['-created_at']

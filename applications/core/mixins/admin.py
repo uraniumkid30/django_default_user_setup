@@ -6,7 +6,7 @@ from django.http import HttpResponse
 
 class ExportCsvMixin:
     @classmethod
-    def get_field_names(cls):
+    def get_field_names(cls) -> list:
         # meta = self.model._meta
         """ Refer to comment on line 34"""
         # field_names = [field.name for field in meta.fields]

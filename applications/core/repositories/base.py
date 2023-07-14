@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Tuple, Iterable
 
 from django.db import models
 from django.db import transaction
@@ -76,7 +76,7 @@ class BaseSelector(ABC):
 class BaseService(ABC):
     @classmethod
     @abstractmethod
-    def get_model(cls) -> Model:
+    def get_model(cls) -> DjangoModelType:
         pass
 
     @classmethod
@@ -145,7 +145,7 @@ class BaseService(ABC):
         update_fields = []
         try:
             model_fields = {field.name: field for field in instance._meta.get_fields()}
-            updatable_fields: list = fields or data.keys()
+            updatable_fields: Iterable = fields or data.keys()
             for field in updatable_fields:
                 # Skip if a field is not present in the actual data
                 if field not in data:
