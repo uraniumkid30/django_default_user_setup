@@ -5,7 +5,6 @@ from django.contrib.auth.models import BaseUserManager
 
 from ..validators import UserValidation
 
-
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
@@ -18,6 +17,7 @@ class UserManager(BaseUserManager):
         UserValidation.phone_number_is_valid(phone_number)
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
+        user.is_active = True
         user.set_password(password)
         user.save(using=self._db)
         return user

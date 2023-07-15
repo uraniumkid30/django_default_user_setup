@@ -26,9 +26,9 @@ class User(AbstractBaseUser, PermissionsMixin, TimeBaseModel):
     objects = UserManager()
 
     def __str__(self):
-        if self.first_name:
-            return "{}".format(self.first_name)
-        return "{}".format(self.phone_no)
+        # if self.first_name:
+        #     return "{}".format(self.first_name)
+        return "{}:{}".format(self.username, self.phone_no)
 
     class Meta:
         verbose_name = 'user'
@@ -59,4 +59,4 @@ class UserProfile(TimeBaseModel):
     user = models.OneToOneField(to='User', on_delete=models.CASCADE)
 
     def __str__(self):
-        return "{}".format(self.user)
+        return "Profile for : {}".format(self.user)

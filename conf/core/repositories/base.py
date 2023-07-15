@@ -7,8 +7,8 @@ from django.db.models import Model
 from django_filters import FilterSet
 from django.db.models.query import QuerySet
 
-from core.repositories.exceptions import FetchError
-from applications.core.types import DjangoModelType
+from conf.core.repositories.exceptions import FetchError
+from conf.core.types import DjangoModelType
 
 
 class BaseSelector(ABC):

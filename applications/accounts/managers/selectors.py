@@ -1,8 +1,8 @@
 from django.db.models.query import QuerySet
 
 from conf.core.repositories.base import BaseSelector
-from applications.accounts.models import User
-from .filters import UserFilter
+from applications.accounts.models import User, UserProfile
+from .filters import UserFilter, UserProfileFilter
 
 
 class UserSelector(BaseSelector):
@@ -15,7 +15,7 @@ class UserSelector(BaseSelector):
         return User
 
     @classmethod
-    def user_get_login_data(cls, *, user: User):
+    def get_user_login_data(cls, *, user: User):
         return {
             "id": user.id,
             "username": user.username,
@@ -26,4 +26,22 @@ class UserSelector(BaseSelector):
 
     @classmethod
     def list_users(cls, *, filters: dict = {}) -> QuerySet[User]:
-        cls.fetch_records(**filters)
+        return cls.fetch_records(**filters)
+
+
+class UserProfileSelector(BaseSelector):
+    @classmethod
+    def get_queryset_filter(cls):
+        return UserProfileFilter
+
+    @classmethod
+    def get_model(cls):
+        return UserProfile
+
+    @classmethod
+    def list_user_profiles(cls, *, filters: dict = {}) -> QuerySet[UserProfile]:
+        return cls.fetch_records(**filters)
+
+    @classmethod
+    def get_user_profile(cls, *, filters: dict = {}) -> QuerySet[UserProfile]:
+        return cls.fetch_record(**filters)
