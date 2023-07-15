@@ -48,14 +48,14 @@ class User(AbstractBaseUser, PermissionsMixin, TimeBaseModel):
         return self.first_name
 
 
-class Blacklist(BaseModel):
+class Blacklist(TimeBaseModel):
     blacklist = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return self.blacklist
 
 
-class UserProfile(BaseModel):
+class UserProfile(TimeBaseModel):
     user = models.OneToOneField(to='User', on_delete=models.CASCADE)
 
     def __str__(self):
