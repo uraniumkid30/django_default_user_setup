@@ -1,5 +1,5 @@
 from dataclasses import dataclass, asdict
-from applications.core.base_dataclasses import DefaultSchema
+from conf.core.base_dataclasses import DefaultSchema
 
 
 @dataclass(frozen=True)
