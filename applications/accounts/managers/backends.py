@@ -2,7 +2,6 @@ from django.conf import settings
 from django.contrib.auth.backends import BaseBackend
 from django.contrib.auth.hashers import check_password
 from django.db.models import Q
-from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 
 MyUser = get_user_model()
@@ -25,13 +24,12 @@ class SettingsBackend(BaseBackend):
         try:
             user = MyUser.objects.get(Q(username=username)|Q(email=username)|Q(phone_no=username))
             
-        except User.DoesNotExist:
+        except MyUser.DoesNotExist:
             # Create a new user. There's no need to set a password
             # because only the password from settings.py is checked.
             pass
         else:
             if user.check_password(password):
-                user.is_active = True
                 user.save()
                 return user
         return None
