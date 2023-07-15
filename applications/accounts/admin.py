@@ -16,14 +16,14 @@ class ExportUserCSVMixin(ExportCsvMixin):
 
 
 class CustomUserAdmin(UserAdmin, ExportUserCSVMixin):
-    list_display = ('id', 'first_name', 'last_name', 'email', 'phone_no',
+    list_display = ('id', 'first_name', 'last_name', 'username', 'email', 'phone_no',
                     'created_at')
     list_filter = ('created_at', 'is_active', 'is_staff')
     search_fields = ('phone_no', "email")
     ordering = ('created_at',)
     fieldsets = (
         ('Identity', {'fields': ('first_name', 'last_name'), }),
-        ('Personal info', {'fields': ('phone_no', 'email', )}),
+        ('Personal info', {'fields': ('phone_no', 'email', 'username', )}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser')}),
     )
     actions = ["export_as_csv"]
