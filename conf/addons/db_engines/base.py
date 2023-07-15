@@ -13,5 +13,5 @@ class BaseEngine(ABC):
     def get_engine_fields(cls, data: dict) -> dict:
         """ """
         schema = cls.get_schema()
-        validated_data: dict = schema(data).to_dict()
+        validated_data: dict = schema(**data).to_dict()
         return validated_data

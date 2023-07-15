@@ -1,30 +1,28 @@
 from conf.core.base_dataclasses import BaseSchema
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
-@dataclass
+@dataclass(frozen=True)
 class EngineNames:
     sqlite: str = 'sqlite'
     postgres: str = 'postgres'
 
 
-@dataclass
+@dataclass(frozen=True)
 class BaseEngineSchema(BaseSchema):
     ENGINE: str
     NAME: str
 
 
-@dataclass
+@dataclass(frozen=True)
 class SqliteSchema(BaseEngineSchema):
-    ENGINE: str = "django.db.backends.sqlite3"
-    NAME: str
+    ENGINE: str = field(default="django.db.backends.sqlite3", init=False)
 
 
-@dataclass
+@dataclass(frozen=True)
 class PostgresqlSchema(BaseEngineSchema):
-    ENGINE: str = "django.db.backends.sqlite3"
-    NAME: str
+    ENGINE: str = field(default="django.db.backends.sqlite3", init=False)
     USER: str
     PASSWORD: str
-    HOST: str = "127.0.0.1"
-    PORT: str = "5432"
+    HOST: str = field(default="127.0.0.1")
+    PORT: str = field(default="5432")
