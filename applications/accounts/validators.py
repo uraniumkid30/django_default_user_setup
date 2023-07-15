@@ -5,7 +5,7 @@ from typing import NoReturn
 class UserValidation:
     @staticmethod
     def email_is_valid(value: str) -> NoReturn:
-        pattern: str = "/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/"
+        pattern: str = r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+'
         if not re.match(pattern, value):
             raise ValueError(f"Invalid email {value}")
 

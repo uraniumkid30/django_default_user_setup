@@ -14,7 +14,7 @@ class UserManager(BaseUserManager):
         Creates and saves a User with the given email and password.
         """
         UserValidation.email_is_valid(email)
-        phone_number = extra_fields.get("phone_number")
+        phone_number = extra_fields.get("phone_no")
         UserValidation.phone_number_is_valid(phone_number)
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
