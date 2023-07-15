@@ -7,10 +7,10 @@ from django.contrib.auth.models import (
 )
 
 from .managers import UserManager
-from conf.core.models import BaseModel
+from conf.core.models import TimeBaseModel
 
 
-class User(AbstractBaseUser, PermissionsMixin, BaseModel):
+class User(AbstractBaseUser, PermissionsMixin, TimeBaseModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     username = models.CharField(max_length=40, null=True, blank=True)
     first_name = models.CharField(max_length=255, blank=True, null=True)

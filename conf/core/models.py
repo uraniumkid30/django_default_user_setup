@@ -3,7 +3,7 @@ from typing import NoReturn, List
 from django.db import models
 
 
-class BaseModel(models.Model):
+class TimeBaseModel(models.Model):
     """
     This model defines base models that implements common fields like:
     created_at
