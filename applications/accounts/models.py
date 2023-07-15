@@ -22,7 +22,7 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
     is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'phone_no'
-    REQUIRED_FIELDS = ['email', ]
+    REQUIRED_FIELDS = ['email', 'username', ]
     objects = UserManager()
 
     def __str__(self):

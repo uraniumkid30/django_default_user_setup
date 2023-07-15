@@ -77,6 +77,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin,
+    'applications.accounts.managers.backends.SettingsBackend',
+    'django.contrib.auth.backends.ModelBackend',
+
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
