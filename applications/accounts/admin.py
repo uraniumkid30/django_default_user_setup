@@ -7,11 +7,11 @@ from .models import User, UserProfile, Blacklist
 
 class ExportUserCSVMixin(ExportCsvMixin):
     @classmethod
-    def get_field_names(cls):
+    def get_field_names(cls) -> list:
         return ['First Name', 'Last Name', 'Phone Number', 'Email', 'Created_at']
 
     @classmethod
-    def get_query_data(cls):
+    def get_query_data(cls) -> list:
         return User.objects.all().values_list('first_name', 'last_name', 'phone_no', 'email', 'created_at')
 
 
