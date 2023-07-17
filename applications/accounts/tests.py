@@ -5,7 +5,7 @@ from .managers.services import UserService
 
 class UserTestCase(TestCase):
     def setUp(self):
-        self.valid_user_data = {
+        self.valid_user_data: dict = {
             "email": "test@example.com",
             "username": "test username",
             "phone_no": "2909005858",
@@ -13,7 +13,7 @@ class UserTestCase(TestCase):
             "last_name": "test last name",
             "password": "test password",
         }
-        self.invalid_user_data = {
+        self.invalid_user_data: dict = {
             "email": "test@example.com",
             "username": "test username",
             "password": "test password",
