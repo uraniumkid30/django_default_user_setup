@@ -1,3 +1,5 @@
+from typing import Iterable
+
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
@@ -16,17 +18,21 @@ class ExportUserCSVMixin(ExportCsvMixin):
 
 
 class CustomUserAdmin(UserAdmin, ExportUserCSVMixin):
-    list_display = ('id', 'first_name', 'last_name', 'username', 'email', 'phone_no',
-                    'created_at')
-    list_filter = ('created_at', 'is_active', 'is_staff')
-    search_fields = ('phone_no', "email")
-    ordering = ('created_at',)
-    fieldsets = (
+    list_display: Iterable = (
+        'id', 'first_name',
+        'last_name', 'username',
+        'email', 'phone_no',
+        'created_at',
+    )
+    list_filter: Iterable = ('created_at', 'is_active', 'is_staff')
+    search_fields: Iterable = ('phone_no', "email")
+    ordering: Iterable = ('created_at',)
+    fieldsets: Iterable = (
         ('Identity', {'fields': ('first_name', 'last_name'), }),
         ('Personal info', {'fields': ('phone_no', 'email', 'username', )}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser')}),
     )
-    actions = ["export_as_csv"]
+    actions: Iterable = ["export_as_csv"]
 
 
 admin.site.register(User, CustomUserAdmin)
