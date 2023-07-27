@@ -8,6 +8,7 @@ from conf.addons.directories import (
     DATABASE_DIR,
     FileProcessingTool
 )
+from conf.env_manager import env
 
 db_name = "development_database.sqlite3"
 db_path = os.path.join(DATABASE_DIR, db_name)
@@ -20,7 +21,7 @@ DATABASES = {
     }
 }
 
-DEBUG = True
+DEBUG = DEBUG = env.bool("DJANGO_DEBUG_SETTINGS", True)
 
 SECRET_KEY = f"django-insecure-{secrets.token_urlsafe(50)}"
 
