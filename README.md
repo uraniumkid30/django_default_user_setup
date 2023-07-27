@@ -1,5 +1,8 @@
 # default_django_setup
-- starter template for other django projects.
+- starter template for other django (None API) projects.
+- if you are looking for a quick way to start a new project 
+with some things already available, like an admin system and 
+other services, then you are in the right place
 
 # Requirements
 pipenv
