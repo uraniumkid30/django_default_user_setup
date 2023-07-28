@@ -4,8 +4,16 @@ from abc import ABC, abstractmethod
 
 
 class BaseSchema:
+    def get_default(self, data: dict = {}):
+        return None if not data else list(data.keys())[0]
+
     def to_dict(self):
         return {k: v for k, v in asdict(self).items()}
+
+    def get(self, key):
+        data = self.to_dict()
+        default = self.get_default(data)
+        return data.get(key, default)
 
 
 class DefaultSchema(BaseSchema):
