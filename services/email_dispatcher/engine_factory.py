@@ -1,6 +1,9 @@
-from services.email_dispatcher.engine import (
+from services.email_dispatcher.django_email_engine import (
     EmailEngine,
     DjangoEmailEngine,
+    
+)
+from services.email_dispatcher.aws_email_engine import (
     AWSSESEmailEngine,
 )
 
