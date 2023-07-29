@@ -1,7 +1,7 @@
 # default_django_setup
 - starter template for other django (None API) projects.
 - if you are looking for a quick way to start a new project 
-with some things already available, like an admin system and 
+with some things already available, like a customized user system and 
 other services, then you are in the right place
 
 # Requirements
@@ -36,3 +36,5 @@ pipenv run pre-commit install
 ```
 
 This will install pre-commits lattest settings at .git/hooks/pre-commit
+
+Also create an issue if all doesnt go well. thanks
