@@ -1,13 +1,13 @@
-from typing import Any, List
+from typing import Any, List, Optional
 from dataclasses import dataclass, asdict
 from abc import ABC, abstractmethod
 
 
 class BaseSchema:
-    def get_default(self, data: dict = {}):
+    def get_default(self, data: dict = {}) -> Optional[Any]:
         return None if not data else list(data.keys())[0]
 
-    def to_dict(self):
+    def to_dict(self) -> dict:
         return {k: v for k, v in asdict(self).items()}
 
     def get(self, key):
@@ -17,7 +17,7 @@ class BaseSchema:
 
 
 class DefaultSchema(BaseSchema):
-    def choices(self):
+    def choices(self) -> list:
         return [(v, k) for k, v in asdict(self).items()]
 
     def in_choices(self, value) -> bool:
